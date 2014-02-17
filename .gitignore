@@ -1,0 +1,8 @@
+# Project Excludes #
+####################
+/doc
+
+# OS Generated Files #
+######################
+*~
+\#*#
