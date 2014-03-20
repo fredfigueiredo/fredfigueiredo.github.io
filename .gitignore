@@ -1,6 +1,7 @@
 # Project Excludes #
 ####################
 /doc
+/node_modules
 
 # OS Generated Files #
 ######################
