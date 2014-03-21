@@ -97,21 +97,28 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+body
+{
+    background-image: url('../img/brushed.png');
+    background-color: #cccccc;
+    color: #293644;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 40px;
+}
+
+.content {
+    padding-top: 100px;
+    text-align: center;
+}
+
+@media only screen and (min-width: 240px) and (max-width: 650px) {
+
+.content {
+    padding-top: 20px;
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 /* ==========================================================================
    Helper classes

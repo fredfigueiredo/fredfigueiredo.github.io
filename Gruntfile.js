@@ -9,7 +9,7 @@ module.exports = function(grunt) {
       options: {
         livereload: true
       },
-      files: ['*.html']
+      files: ['**/*.html', '**/*.css']
     },
 
     // local web server to view changes
