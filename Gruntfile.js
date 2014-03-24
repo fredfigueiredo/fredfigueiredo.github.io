@@ -1,5 +1,8 @@
 module.exports = function(grunt) {
 
+  // loads all grunt tasks
+  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+
   // project configuration
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -48,12 +51,6 @@ module.exports = function(grunt) {
     }
 
   });
-
-  // Load the plugins
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-open');
-  grunt.loadNpmTasks('grunt-gh-pages');
 
   // Default task(s)
   grunt.registerTask('publish', ['gh-pages']);
