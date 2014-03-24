@@ -1,7 +1,9 @@
 # Project Excludes #
 ####################
-/doc
-/node_modules
+doc
+public
+node_modules
+.grunt
 
 # OS Generated Files #
 ######################

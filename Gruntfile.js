@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
 
-  // Project configuration.
+  // project configuration
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
@@ -35,6 +35,16 @@ module.exports = function(grunt) {
       all: {
         path: 'http://localhost:<%= connect.server.options.port %>'
       }
+    },
+
+    // commits defined folder to specified branch
+    'gh-pages': {
+      options: {
+        base: 'public',
+        branch: 'master',
+        message: 'Auto-generated build commit'
+      },
+      src: ['**']
     }
 
   });
@@ -43,8 +53,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-open');
+  grunt.loadNpmTasks('grunt-gh-pages');
 
   // Default task(s)
+  grunt.registerTask('publish', ['gh-pages']);
   grunt.registerTask('dev', ['connect', 'open', 'watch']);
   grunt.registerTask('default', ['watch']);
 
