@@ -12,7 +12,8 @@ module.exports = function(grunt) {
       options: {
         livereload: true
       },
-      files: ['**/*.html', '**/*.css']
+      files: ['**/*.html', '**/*.css', '!public/**'],
+      tasks: ['copy'],
     },
 
     // local web server to view changes
@@ -43,18 +44,26 @@ module.exports = function(grunt) {
     // commits defined folder to specified branch
     'gh-pages': {
       options: {
-        base: 'public',
+        base: 'dist',
         branch: 'master',
         message: 'Auto-generated build commit'
       },
       src: ['**']
+    },
+
+    copy: {
+      main: {
+          expand: true,
+          src: ['css/*', 'js/*', 'img/*', 'index.html', 'CNAME', 'robots.txt'],
+          dest: 'dist/',
+      }
     }
 
   });
 
   // Default task(s)
-  grunt.registerTask('publish', ['gh-pages']);
-  grunt.registerTask('dev', ['connect', 'open', 'watch']);
+  grunt.registerTask('publish', ['copy', 'gh-pages']);
+  grunt.registerTask('dev', ['connect', 'open', 'copy', 'watch']);
   grunt.registerTask('default', ['watch']);
 
 };
