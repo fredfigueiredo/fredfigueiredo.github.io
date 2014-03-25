@@ -1,14 +1,17 @@
 {
   "name": "fredfigueiredo.github.io",
+  "description": "fredfigueiredo.github.io web site",
+  "author": "Frederico Figueiredo",
   "version": "0.0.1",
+  "repository": "git@github.com:fredfigueiredo/fredfigueiredo.github.io.git",
   "devDependencies": {
     "grunt": "~0.4.2",
-    "grunt-contrib-watch": "~0.6.1",
     "grunt-contrib-connect": "~0.6.0",
-    "connect-livereload": "~0.3.2",
-    "grunt-open": "~0.2.3",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-watch": "~0.6.1",
     "grunt-gh-pages": "~0.9.1",
-    "matchdep": "~0.3.0",
-    "grunt-contrib-copy": "~0.5.0"
+    "grunt-open": "~0.2.3",
+    "connect-livereload": "~0.3.2",
+    "matchdep": "~0.3.0"
   }
 }
