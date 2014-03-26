@@ -12,7 +12,7 @@ module.exports = function(grunt) {
       options: {
         livereload: true
       },
-      files: ['**/*.html', '**/*.css', '!public/**'],
+      files: ['**/*.html', '**/*.css', '!dist/**'],
       tasks: ['copy'],
     },
 
