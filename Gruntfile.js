@@ -13,7 +13,7 @@ module.exports = function(grunt) {
         livereload: true
       },
       files: ['**/*.html', '**/*.css', '!dist/**'],
-      tasks: ['copy'],
+      tasks: ['clean', 'copy'],
     },
 
     // local web server to view changes
@@ -52,18 +52,25 @@ module.exports = function(grunt) {
     },
 
     copy: {
-      main: {
+      build: {
           expand: true,
-          src: ['css/*', 'js/*', 'img/*', 'index.html', 'CNAME', 'robots.txt'],
-          dest: 'dist/',
+          src: ['css/*', 'js/**', 'img/*', 'index.html', 'CNAME', 'robots.txt'],
+          dest: 'dist',
       }
-    }
+    },
+
+    // wipe clean the distribution folder
+    clean: {
+      build: {
+        src: ['dist']
+      }
+    },
 
   });
 
   // Default task(s)
   grunt.registerTask('publish', ['copy', 'gh-pages']);
-  grunt.registerTask('dev', ['connect', 'open', 'copy', 'watch']);
+  grunt.registerTask('dev', ['connect', 'open', 'clean', 'copy', 'watch']);
   grunt.registerTask('default', ['watch']);
 
 };
