@@ -72,7 +72,7 @@ module.exports = function(grunt) {
   // Default task(s)
   grunt.registerTask(
     'publish',
-    'Publishes all the files in the dist directory to the master branch.'
+    'Publishes all the files in the dist directory to the master branch.',
     ['clean', 'copy', 'gh-pages']
   );
 
