@@ -99,7 +99,7 @@ textarea {
 
 body
 {
-    background-image: url('../img/brushed.png');
+    background-image: url('../img/pattern.png');
     background-color: #cccccc;
     color: #293644;
     font-family: 'Open Sans', sans-serif;
@@ -108,6 +108,12 @@ body
 
 .content {
     padding-top: 100px;
+    text-align: center;
+}
+
+.soon {
+    font-size: 30px;
+    padding-top: 10px;
     text-align: center;
 }
 
