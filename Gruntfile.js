@@ -1,28 +1,26 @@
 module.exports = function(grunt) {
 
-  // loads all grunt tasks
+  // Loads all grunt tasks
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-  // project configuration
+  // Project configuration
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-    // lookout for changes that force a reload
-    watch: {
-      options: {
-        livereload: true
-      },
-      files: ['**/*.html', '**/*.css', '!dist/**'],
-      tasks: ['clean', 'copy'],
+    // Wipe clean the dist folder
+    clean: {
+      build: {
+        src: ['dist']
+      }
     },
 
-    // local web server to view changes
+    // Sets up a local web server to view changes
     connect: {
       server: {
         options: {
           port: 9002,
           base: '.',
-          // ensures reload without he need for browser plugin or livereload.js script
+          // Ensures reload without he need for browser plugin or livereload.js script
           middleware: function (connect, options) {
             return [
               require('connect-livereload')(),
@@ -34,23 +32,7 @@ module.exports = function(grunt) {
       }
     },
 
-    // opens the browser at the project's URL
-    open: {
-      all: {
-        path: 'http://localhost:<%= connect.server.options.port %>'
-      }
-    },
-
-    // commits defined folder to specified branch
-    'gh-pages': {
-      options: {
-        base: 'dist',
-        branch: 'master',
-        message: 'Auto-generated build commit'
-      },
-      src: ['**']
-    },
-
+    // Copies all assets to the dist folder
     copy: {
       build: {
           expand: true,
@@ -59,18 +41,49 @@ module.exports = function(grunt) {
       }
     },
 
-    // wipe clean the distribution folder
-    clean: {
-      build: {
-        src: ['dist']
+    // Commits the dist folder to the master branch
+    'gh-pages': {
+      options: {
+        base: 'dist',
+        branch: 'master',
+        message: 'Auto-generated build commit.'
+      },
+      src: ['**']
+    },
+
+    // Opens the browser at the project's URL
+    open: {
+      all: {
+        path: 'http://localhost:<%= connect.server.options.port %>'
       }
+    },
+
+    // Lookout for changes that force a reload
+    watch: {
+      options: {
+        livereload: true
+      },
+      files: ['**/*.html', '**/*.css', '!**/dist/**', '!**/node_modules/**'],
+      tasks: ['clean', 'copy'],
     },
 
   });
 
   // Default task(s)
-  grunt.registerTask('publish', ['copy', 'gh-pages']);
-  grunt.registerTask('dev', ['connect', 'open', 'clean', 'copy', 'watch']);
-  grunt.registerTask('default', ['watch']);
+  grunt.registerTask(
+    'publish',
+    'Publishes all the files in the dist directory to the master branch.'
+    ['clean', 'copy', 'gh-pages']
+  );
+
+  grunt.registerTask(
+    'dev',
+    'Watches for changes in the project, builds them, runs a server, and opens the browser.',
+    ['clean', 'copy', 'connect', 'open', 'watch']);
+
+  grunt.registerTask(
+    'default',
+    'Watches for changes in the project',
+    ['clean', 'copy', 'watch']);
 
 };
