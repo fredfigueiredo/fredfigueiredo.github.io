@@ -107,8 +107,18 @@ body
 }
 
 .content {
-    padding-top: 100px;
-    text-align: center;
+  padding-top: 100px;
+  text-align: center;
+}
+
+.content a:link, .content a:visited {
+    color: #0645AD;
+    font-weight: bold;
+      text-decoration: none;
+}
+
+.content a:hover, .content a:active {
+  text-decoration: underline;
 }
 
 .soon {
