@@ -6,7 +6,6 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Frederico Figueiredo - Home Page</title>
     <meta name="description" content="Frederico Figueiredo's greeting card.
       Includes the latest version of his resume / curriculum vitae (PDF),
       list of publications, and social network links.">
@@ -16,30 +15,189 @@
       Agile, Scrum, Project Management, Coaching, Communication">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <title>Frederico Figueiredo - Home Page</title>
+
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    <link rel="stylesheet" href="css/normalize.css">
+    <!-- CSS Reset -->
+    <link href="css/normalize.css" rel="stylesheet">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom Google Web Font -->
+    <link
+      href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic'
+      rel='stylesheet' type='text/css'>
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/main.css">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
   </head>
   <body>
     <!--[if lt IE 7]>
-        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser.
+        Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+      </p>
     <![endif]-->
 
-    <div class="content">
-        Hi, I'm Fred!
-        <p class="soon">
-          Coming soon...<br>
-          to a browser near you.<br><br>
-          Meanwhile, you can grab my
-            <a href="https://dl.dropboxusercontent.com/u/6838757/CVs/Frederico_Figueiredo_CV.pdf">updated CV</a>.
-        </p>
+    <!-- Page based on Bootstrap Template: http://startbootstrap.com/landing-page -->
+
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://startbootstrap.com">Frederico Figueiredo</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#about">About</a>
+                    </li>
+                    <li><a href="#services">Skills</a>
+                    </li>
+                    <li><a href="#contact">Contacts</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <div class="intro-header">
+
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="intro-message">
+              <h1>Hi, I'm Fred</h1>
+              <h3>Lover of life, communication and interaction</h3>
+              <hr class="intro-divider">
+              <ul class="list-inline intro-social-buttons">
+                <li>
+                  <a href="https://dl.dropboxusercontent.com/u/6838757/CVs/Frederico_Figueiredo_CV.pdf" target="_blank"
+                    class="btn btn-default btn-lg">
+                      <i class="fa fa-download fa-fw"></i>
+                      <span class="network-name">Download CV</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- /.container -->
+
     </div>
+    <!-- /.intro-header -->
+
+    <div class="content-section-a">
+
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-5 col-sm-6">
+            (more coming soon)
+          </div>
+        </div>
+
+      </div>
+      <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->
+
+    <div class="banner">
+
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-5">
+            <h2>Let's stay connected:</h2>
+          </div>
+          <div class="col-lg-7">
+            <ul class="list-inline banner-social-buttons">
+              <li>
+                <a href="http://www.linkedin.com/in/fredericofigueiredo" target="_blank" class="btn btn-default btn-lg">
+                  <i class="fa fa-linkedin fa-fw"></i>
+                  <span class="network-name">Linkedin</span>
+                </a>
+              </li>
+              <li>
+                <a href="http://twitter.com/fredfigueiredo" target="_blank" class="btn btn-default btn-lg">
+                  <i class="fa fa-twitter fa-fw"></i>
+                  <span class="network-name">Twitter</span>
+                </a>
+              </li>
+              <li>
+                <a href="http://github.com/fredfigueiredo/" target="_blank" class="btn btn-default btn-lg">
+                  <i class="fa fa-github fa-fw"></i>
+                  <span class="network-name">Github</span>
+                </a>
+              </li>
+              <li>
+                <a href="http://www.facebook.com/frederico.figueiredo.pt" target="_blank" class="btn btn-default btn-lg">
+                  <i class="fa fa-facebook fa-fw"></i>
+                  <span class="network-name">Facebook</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+      <!-- /.container -->
+
+    </div>
+    <!-- /.banner -->
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <ul class="list-inline">
+              <li>
+                <a href="#home">Home</a>
+              </li>
+              <li class="footer-menu-divider">&sdot;</li>
+              <li>
+                <a href="#about">About</a>
+              </li>
+              <li class="footer-menu-divider">&sdot;</li>
+              <li>
+                <a href="#services">Skills</a>
+              </li>
+              <li class="footer-menu-divider">&sdot;</li>
+              <li>
+                <a href="#contact">Contacts</a>
+              </li>
+            </ul>
+            <p class="copyright text-muted small">
+              Copyright &copy; Frederico Figueiredo 2014. All Rights Reserved
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- /.footer -->
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+    <script src="js/vendor/bootstrap.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
   </body>
