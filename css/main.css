@@ -106,7 +106,6 @@ body, h1, h2, h3, h4, h5, h6 {
   color: #f8f8f8;
   background: url(../img/intro-bg.jpg) no-repeat center center;
   background-size: cover;
-  text-align: center;
 }
 
 .intro-message {
@@ -125,6 +124,7 @@ body, h1, h2, h3, h4, h5, h6 {
   width: 480px;
   border-top: 1px solid #f8f8f8;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin-left: 0;
 }
 
 .intro-message > h3 {
@@ -132,8 +132,13 @@ body, h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 767px) {
+  .intro-header {
+    background: url(../img/intro-bg-small.jpg) no-repeat 100% 100%;
+    background-size: cover;
+  }
+
   .intro-message {
-    padding-bottom: 15%;
+    padding-bottom: 20%;
   }
 
   .intro-message > h1 {
@@ -151,8 +156,9 @@ body, h1, h2, h3, h4, h5, h6 {
   }
 
   .intro-divider {
-    width: 100%;
+    width: 350px;
   }
+
 }
 
 .network-name {
@@ -203,6 +209,7 @@ body, h1, h2, h3, h4, h5, h6 {
 .banner-social-buttons {
   float: right;
   margin-top: 0;
+  margin-right: 10px;
 }
 
 @media (max-width: 1199px) {
@@ -210,9 +217,22 @@ body, h1, h2, h3, h4, h5, h6 {
     float: left;
     margin-top: 15px;
   }
+
+}
+
+@media (max-width: 991px) {
+  .img-thumbnail {
+    margin-top: 20px;
+  }
+
 }
 
 @media (max-width: 767px) {
+  .banner {
+    background: url(../img/banner-bg-small.jpg) no-repeat center center;
+    background-size: cover;
+  }
+
   .banner h2 {
     margin: 0;
     text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
@@ -228,6 +248,11 @@ body, h1, h2, h3, h4, h5, h6 {
   ul.banner-social-buttons > li:last-child {
     margin-bottom: 0;
   }
+
+  .img-thumbnail {
+    margin-top: 0;
+  }
+
 }
 
 footer {
@@ -242,6 +267,12 @@ p.copyright {
 /* ==========================================================================
    Helper classes
    ========================================================================== */
+
+/* Text spacing */
+
+.top-padding {
+  padding-top: 50px;
+}
 
 /*
  * Image replacement
@@ -338,23 +369,6 @@ p.copyright {
 
 .clearfix {
     *zoom: 1;
-}
-
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-    /* Style adjustments for viewports that meet the condition */
-}
-
-@media print,
-       (-o-min-device-pixel-ratio: 5/4),
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 120dpi) {
-    /* Style adjustments for high resolution devices */
 }
 
 /* ==========================================================================
