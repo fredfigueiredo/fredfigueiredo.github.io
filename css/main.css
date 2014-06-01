@@ -40,19 +40,6 @@ html {
 }
 
 /*
- * A better looking default horizontal rule
- */
-
-hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
-}
-
-/*
  * Remove the gap between images, videos, audio and canvas and the bottom of
  * their containers: h5bp.com/i/440
  */
@@ -95,50 +82,197 @@ textarea {
 
 /* ==========================================================================
    Author's custom styles
+   Based on Bootstrap Template: http://startbootstrap.com/landing-page
    ========================================================================== */
 
-body
-{
-    background-image: url('../img/light_toast.png');
-    background-color: #cccccc;
-    color: #293644;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 40px;
+body, html {
+  height: 100%;
+  width: 100%;
 }
 
-.content {
-  padding-top: 100px;
-  text-align: center;
+body, h1, h2, h3, h4, h5, h6 {
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
 }
 
-.content a:link, .content a:visited {
-    color: #0645AD;
-    font-weight: bold;
-      text-decoration: none;
+.lead {
+  font-size: 18px;
+  font-weight: 400;
 }
 
-.content a:hover, .content a:active {
-  text-decoration: underline;
+.intro-header {
+  padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+  padding-bottom: 50px;
+  color: #f8f8f8;
+  background: url(../img/intro-bg.jpg) no-repeat center center;
+  background-size: cover;
 }
 
-.soon {
-    font-size: 30px;
-    padding-top: 10px;
-    text-align: center;
+.intro-message {
+  position: relative;
+  padding-top: 10%;
+  padding-bottom: 10%;
 }
 
-@media only screen and (min-width: 240px) and (max-width: 650px) {
-
-.content {
-    padding-top: 20px;
+.intro-message > h1 {
+  margin: 0;
+  font-size: 5em;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
 
+.intro-divider {
+  width: 480px;
+  border-top: 1px solid #f8f8f8;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin-left: 0;
+}
 
+.intro-message > h3 {
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 767px) {
+  .intro-header {
+    background: url(../img/intro-bg-small.jpg) no-repeat 100% 100%;
+    background-size: cover;
+  }
+
+  .intro-message {
+    padding-bottom: 20%;
+  }
+
+  .intro-message > h1 {
+    font-size: 3em;
+  }
+
+  ul.intro-social-buttons > li {
+    display: block;
+    margin-bottom: 20px;
+    padding: 0;
+  }
+
+  ul.intro-social-buttons > li:last-child {
+    margin-bottom: 0;
+  }
+
+  .intro-divider {
+    width: 350px;
+  }
+
+}
+
+.network-name {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.content-section-a {
+  background-color: #f8f8f8;
+  padding: 50px 0;
+}
+
+.content-section-b {
+  border-top: 1px solid #e7e7e7;
+  border-bottom: 1px solid #e7e7e7;
+  padding: 50px 0;
+}
+
+.section-heading {
+  margin-bottom: 30px;
+}
+
+.section-heading-spacer {
+  border-top: 3px solid #e7e7e7;
+  width: 200px;
+  float: left;
+}
+
+.banner {
+  padding: 100px 0;
+  color: #f8f8f8;
+  background: url(../img/banner-bg.jpg) no-repeat center center;
+  background-size: cover;
+}
+
+.banner h2 {
+  margin: 0;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+  font-size: 3em;
+}
+
+.banner ul {
+  margin-bottom: 0;
+}
+
+.banner-social-buttons {
+  float: right;
+  margin-top: 0;
+  margin-right: 10px;
+}
+
+@media (max-width: 1199px) {
+  ul.banner-social-buttons {
+    float: left;
+    margin-top: 15px;
+  }
+
+}
+
+@media (max-width: 991px) {
+  .img-thumbnail {
+    margin-top: 20px;
+  }
+
+}
+
+@media (max-width: 767px) {
+  .banner {
+    background: url(../img/banner-bg-small.jpg) no-repeat center center;
+    background-size: cover;
+  }
+
+  .banner h2 {
+    margin: 0;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+    font-size: 3em;
+  }
+
+  ul.banner-social-buttons > li {
+    display: block;
+    margin-bottom: 20px;
+    padding: 0;
+  }
+
+  ul.banner-social-buttons > li:last-child {
+    margin-bottom: 0;
+  }
+
+  .img-thumbnail {
+    margin-top: 0;
+  }
+
+}
+
+footer {
+  background-color: #f8f8f8;
+  padding: 50px 0;
+}
+
+p.copyright {
+  margin: 15px 0 0;
 }
 
 /* ==========================================================================
    Helper classes
    ========================================================================== */
+
+/* Text spacing */
+
+.top-padding {
+  padding-top: 50px;
+}
 
 /*
  * Image replacement
@@ -235,23 +369,6 @@ body
 
 .clearfix {
     *zoom: 1;
-}
-
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-    /* Style adjustments for viewports that meet the condition */
-}
-
-@media print,
-       (-o-min-device-pixel-ratio: 5/4),
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 120dpi) {
-    /* Style adjustments for high resolution devices */
 }
 
 /* ==========================================================================
