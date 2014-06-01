@@ -68,13 +68,25 @@ module.exports = function(grunt) {
       tasks: ['clean', 'copy'],
     },
 
+    // Optimizes all images
+    imagemin: {
+      dynamic: {
+        files: [{
+          expand: true,
+          cwd: 'img/',
+          src: ['**/*.{png,jpg}'],
+          dest: 'dist/img/',
+        }]
+      }
+    },
+
   });
 
   // Default task(s)
   grunt.registerTask(
     'publish',
     'Publishes all the files in the dist directory to the master branch.',
-    ['clean', 'copy', 'gh-pages']
+    ['clean', 'copy', 'imagemin', 'gh-pages']
   );
 
   grunt.registerTask(
