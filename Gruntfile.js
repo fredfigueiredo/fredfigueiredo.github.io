@@ -19,7 +19,7 @@ module.exports = function(grunt) {
       server: {
         options: {
           port: 9002,
-          base: '.',
+          base: 'dist',
           // Ensures reload without he need for browser plugin or livereload.js script
           middleware: function (connect, options) {
             return [
@@ -36,7 +36,8 @@ module.exports = function(grunt) {
     copy: {
       build: {
           expand: true,
-          src: ['css/*', 'js/**', 'img/*', 'index.html', 'CNAME', 'robots.txt'],
+          src: ['css/*', 'js/**', 'img/*', 'font-awesome/fonts/*', 'font-awesome/css/font-awesome.min.css',
+            'index.html', 'CNAME', 'robots.txt'],
           dest: 'dist',
       }
     },
