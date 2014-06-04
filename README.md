@@ -13,5 +13,4 @@
 * Add "Conferences" section
 * Add grunt task to minify JS and CSS (when publishing)
 * Fix header divider in mobile (too long)
-* Add Google Analytics track code when publishing (use grunt-htmlrefs)
 
