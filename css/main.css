@@ -131,6 +131,20 @@ body, h1, h2, h3, h4, h5, h6 {
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
 
+.btn-outline-inverse {
+  color: #fff;
+  background-color: transparent;
+  border-color: #fff;
+}
+
+.btn-outline-inverse:hover, .btn-outline-inverse:focus, .btn-outline-inverse:active {
+  color: #000;
+  text-shadow: none;
+  background-color: #fff;
+  border-color: #fff;
+}
+
+
 @media (max-width: 767px) {
   .intro-header {
     background: url(../img/intro-bg-small.jpg) no-repeat 100% 100%;
