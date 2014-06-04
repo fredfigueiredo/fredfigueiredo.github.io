@@ -80,13 +80,26 @@ module.exports = function(grunt) {
       }
     },
 
+    // Replace / remove references (e.g. include Google Analytics track code)
+    htmlrefs: {
+      dist: {
+        src: './index.html',
+        dest: './dist/index.html',
+        options: {
+          includes: {
+            analytics: './ga.inc',
+          },
+        }
+      }
+    },
+
   });
 
   // Default task(s)
   grunt.registerTask(
     'publish',
     'Publishes all the files in the dist directory to the master branch.',
-    ['clean', 'copy', 'imagemin', 'gh-pages']
+    ['clean', 'copy', 'htmlrefs', 'imagemin', 'gh-pages']
   );
 
   grunt.registerTask(
