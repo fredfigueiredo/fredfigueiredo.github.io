@@ -132,18 +132,17 @@ body, h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-outline-inverse {
-  color: #fff;
-  background-color: transparent;
+  background-color: rgba(100, 100, 100, 0.4);
   border-color: #fff;
+  color: #fff;
 }
 
 .btn-outline-inverse:hover, .btn-outline-inverse:focus, .btn-outline-inverse:active {
-  color: #000;
-  text-shadow: none;
   background-color: #fff;
   border-color: #fff;
+  color: #000;
+  text-shadow: none;
 }
-
 
 @media (max-width: 767px) {
   .intro-header {
