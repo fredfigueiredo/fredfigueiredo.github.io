@@ -64,7 +64,7 @@ module.exports = function(grunt) {
       options: {
         livereload: true
       },
-      files: ['**/*.html', '**/*.css', '!**/dist/**', '!**/node_modules/**'],
+      files: ['**/*.html', '**/*.css', '**/*.js', '!**/dist/**', '!**/node_modules/**'],
       tasks: ['clean', 'copy'],
     },
 
