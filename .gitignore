@@ -5,6 +5,7 @@ doc
 node_modules
 bower_components
 .grunt
+.tmp
 
 # OS Generated Files #
 ######################
