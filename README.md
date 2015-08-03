@@ -1,18 +1,21 @@
 # My Personal Page
 
-> Development environment to quick build and publish my personal web page.
+> Development environment to quick build and publish my personal web page using grunt, bower and bootstrap.
 
 ## Get started
 
 Clone the repository and switch to the 'source' branch:
 ```sh
 git clone git@github.com:fredfigueiredo/fredfigueiredo.github.io.git
-git checkout source
+sudo npm install -g grunt-cli
+sudo npm install -g bower
+
 ```
 
-Install the required dependencies:
+Move to the 'source' branch and install the required dependencies:
 ```sh
-npm install
+git checkout source
+npm install & bower install
 ```
 
 Start the development 'server':
@@ -29,6 +32,18 @@ Needless to say, push the changes to github:
 ```sh
 git push
 ```
+
+## Features
+
+* HTML5 Boilerplate
+* normalize.css
+* Modernizr (custom build based on what you use) & jQuery libraries
+* GruntJS (integrated watch, development & build tasks)
+* Bower for package management in the Front-End
+* Built-in preview server with LiveReload
+* Automagically lint your scripts
+* Automagically wire up your Bower components with grunt-wiredep.
+* Awesome Image Optimization (via OptiPNG, pngquant, jpegtran and gifsicle)
 
 ## What is missing
 
