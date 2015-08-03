@@ -1,14 +1,40 @@
 # My Personal Page
 
-(to be added)
+> Development environment to quick build and publish my personal web page.
 
-#### TODO's
+## Get started
 
-* Update README.md in "source" branch
-  * Detail tools, how to use it, thank you notes, ...
+Clone the repository and switch to the 'source' branch:
+```sh
+git clone git@github.com:fredfigueiredo/fredfigueiredo.github.io.git
+git checkout source
+```
+
+Install the required dependencies:
+```sh
+npm install
+```
+
+Start the development 'server':
+```sh
+grunt dev
+```
+
+When done, publish the changes into the master branch:
+```sh
+grunt publish
+```
+
+Needless to say, push the changes to github:
+```sh
+git push
+```
+
+## What is missing
+
 * Add README.md to "master" branch
   * Explain master / source approach
-  * Add as MASTER.md and rename / copy with grunt task      
+  * Add as MASTER.md and rename / copy with grunt task
 * Add "Recomendations" section
 * Add links to "Conferences" section
 * Add grunt task to minify JS and CSS (when publishing)
