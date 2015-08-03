@@ -1,115 +1,370 @@
-module.exports = function(grunt) {
+// Generated on 2015-08-03 using
+// generator-webapp 1.0.1
+'use strict';
 
-  // Loads all grunt tasks
-  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+module.exports = function (grunt) {
 
-  // Project configuration
+  // Time how long tasks take. Can help when optimizing build times
+  require('time-grunt')(grunt);
+
+  // Automatically load required grunt tasks
+  require('jit-grunt')(grunt, {
+      useminPrepare: 'grunt-usemin'
+  });
+
+  // Configurable paths
+  var config = {
+    app: 'app',
+    dist: 'dist'
+  };
+
+  // Define the configuration for all the tasks
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
 
-    // Wipe clean the dist folder
-    clean: {
-      build: {
-        src: ['dist']
+    // Project settings
+    config: config,
+
+    // Watches files for changes and runs tasks based on the changed files
+    watch: {
+      bower: {
+        files: ['bower.json'],
+        tasks: ['wiredep']
+      },
+      babel: {
+        files: ['<%= config.app %>/scripts/{,*/}*.js'],
+        tasks: ['babel:dist']
+      },
+      babelTest: {
+        files: ['test/spec/{,*/}*.js'],
+        tasks: ['babel:test', 'test:watch']
+      },
+      gruntfile: {
+        files: ['Gruntfile.js']
+      },
+      styles: {
+        files: ['<%= config.app %>/styles/{,*/}*.css'],
+        tasks: ['newer:copy:styles', 'postcss']
       }
     },
 
-    // Sets up a local web server to view changes
-    connect: {
-      server: {
+    browserSync: {
+      options: {
+        notify: false,
+        background: true
+      },
+      livereload: {
         options: {
-          port: 9002,
-          base: 'dist',
-          // Ensures reload without he need for browser plugin or livereload.js script
-          middleware: function (connect, options) {
-            return [
-              require('connect-livereload')(),
-              connect.static(options.base),
-              connect.directory(options.base)
-            ];
+          files: [
+            '<%= config.app %>/{,*/}*.html',
+            '.tmp/styles/{,*/}*.css',
+            '<%= config.app %>/images/{,*/}*',
+            '.tmp/scripts/{,*/}*.js'
+          ],
+          port: 9000,
+          server: {
+            baseDir: ['.tmp', config.app],
+            routes: {
+              '/bower_components': './bower_components'
+            }
           }
+        }
+      },
+      test: {
+        options: {
+          port: 9001,
+          open: false,
+          logLevel: 'silent',
+          host: 'localhost',
+          server: {
+            baseDir: ['.tmp', './test', config.app],
+            routes: {
+              '/bower_components': './bower_components'
+            }
+          }
+        }
+      },
+      dist: {
+        options: {
+          background: false,
+          server: '<%= config.dist %>'
         }
       }
     },
 
-    // Copies all assets to the dist folder
-    copy: {
-      build: {
-          expand: true,
-          src: ['css/*', 'js/**', 'img/*', 'font-awesome/fonts/*', 'font-awesome/css/font-awesome.min.css',
-            'index.html', 'CNAME', 'robots.txt', 'favicon.ico', 'apple-touch-icon-precomposed.png'],
-          dest: 'dist',
-      }
-    },
-
-    // Commits the dist folder to the master branch
-    'gh-pages': {
-      options: {
-        base: 'dist',
-        branch: 'master',
-        message: 'Auto-generated build commit.'
+    // Empties folders to start fresh
+    clean: {
+      dist: {
+        files: [{
+          dot: true,
+          src: [
+            '.tmp',
+            '<%= config.dist %>/*',
+            '!<%= config.dist %>/.git*'
+          ]
+        }]
       },
-      src: ['**']
+      server: '.tmp'
     },
 
-    // Opens the browser at the project's URL
-    open: {
+    // Make sure code styles are up to par and there are no obvious mistakes
+    eslint: {
+      target: [
+        'Gruntfile.js',
+        '<%= config.app %>/scripts/{,*/}*.js',
+        '!<%= config.app %>/scripts/vendor/*',
+        'test/spec/{,*/}*.js'
+      ]
+    },
+
+    // Mocha testing framework configuration options
+    mocha: {
       all: {
-        path: 'http://localhost:<%= connect.server.options.port %>'
+        options: {
+          run: true,
+          urls: ['http://<%= browserSync.test.options.host %>:<%= browserSync.test.options.port %>/index.html']
+        }
       }
     },
 
-    // Lookout for changes that force a reload
-    watch: {
+    // Compiles ES6 with Babel
+    babel: {
       options: {
-        livereload: true
+          sourceMap: true
       },
-      files: ['**/*.html', '**/*.css', '**/*.js', '!**/dist/**', '!**/node_modules/**'],
-      tasks: ['clean', 'copy'],
-    },
-
-    // Optimizes all images
-    imagemin: {
-      dynamic: {
+      dist: {
         files: [{
           expand: true,
-          cwd: 'img/',
-          src: ['**/*.{png,jpg}'],
-          dest: 'dist/img/',
+          cwd: '<%= config.app %>/scripts',
+          src: '{,*/}*.js',
+          dest: '.tmp/scripts',
+          ext: '.js'
+        }]
+      },
+      test: {
+        files: [{
+          expand: true,
+          cwd: 'test/spec',
+          src: '{,*/}*.js',
+          dest: '.tmp/spec',
+          ext: '.js'
         }]
       }
     },
 
-    // Replace / remove references (e.g. include Google Analytics track code)
-    htmlrefs: {
-      dist: {
-        src: './index.html',
-        dest: './dist/index.html',
-        options: {
-          includes: {
-            analytics: './ga.inc',
-          },
-        }
+    // Automatically inject Bower components into the HTML file
+    wiredep: {
+      app: {
+        src: ['<%= config.app %>/index.html'],
+        exclude: ['bootstrap.js'],
+        ignorePath: /^(\.\.\/)*\.\./
       }
     },
 
+    // Renames files for browser caching purposes
+    filerev: {
+      dist: {
+        src: [
+          '<%= config.dist %>/scripts/{,*/}*.js',
+          '<%= config.dist %>/styles/{,*/}*.css',
+          '<%= config.dist %>/images/{,*/}*.*',
+          '<%= config.dist %>/styles/fonts/{,*/}*.*',
+          '<%= config.dist %>/*.{ico,png}'
+        ]
+      }
+    },
+
+    // Reads HTML for usemin blocks to enable smart builds that automatically
+    // concat, minify and revision files. Creates configurations in memory so
+    // additional tasks can operate on them
+    useminPrepare: {
+      options: {
+        dest: '<%= config.dist %>'
+      },
+      html: '<%= config.app %>/index.html'
+    },
+
+    // Performs rewrites based on rev and the useminPrepare configuration
+    usemin: {
+      options: {
+        assetsDirs: [
+          '<%= config.dist %>',
+          '<%= config.dist %>/images',
+          '<%= config.dist %>/styles'
+        ]
+      },
+      html: ['<%= config.dist %>/{,*/}*.html'],
+      css: ['<%= config.dist %>/styles/{,*/}*.css']
+    },
+
+    // The following *-min tasks produce minified files in the dist folder
+    imagemin: {
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '<%= config.app %>/images',
+          src: '{,*/}*.{gif,jpeg,jpg,png}',
+          dest: '<%= config.dist %>/images'
+        }]
+      }
+    },
+
+    svgmin: {
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '<%= config.app %>/images',
+          src: '{,*/}*.svg',
+          dest: '<%= config.dist %>/images'
+        }]
+      }
+    },
+
+    htmlmin: {
+      dist: {
+        options: {
+          collapseBooleanAttributes: true,
+          collapseWhitespace: true,
+          conservativeCollapse: true,
+          removeAttributeQuotes: true,
+          removeCommentsFromCDATA: true,
+          removeEmptyAttributes: true,
+          removeOptionalTags: true,
+          // true would impact styles with attribute selectors
+          removeRedundantAttributes: false,
+          useShortDoctype: true
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= config.dist %>',
+          src: '{,*/}*.html',
+          dest: '<%= config.dist %>'
+        }]
+      }
+    },
+
+    // By default, your `index.html`'s <!-- Usemin block --> will take care
+    // of minification. These next options are pre-configured if you do not
+    // wish to use the Usemin blocks.
+    // cssmin: {
+    //   dist: {
+    //     files: {
+    //       '<%= config.dist %>/styles/main.css': [
+    //         '.tmp/styles/{,*/}*.css',
+    //         '<%= config.app %>/styles/{,*/}*.css'
+    //       ]
+    //     }
+    //   }
+    // },
+    // uglify: {
+    //   dist: {
+    //     files: {
+    //       '<%= config.dist %>/scripts/scripts.js': [
+    //         '<%= config.dist %>/scripts/scripts.js'
+    //       ]
+    //     }
+    //   }
+    // },
+    // concat: {
+    //   dist: {}
+    // },
+
+    // Copies remaining files to places other tasks can use
+    copy: {
+      dist: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= config.app %>',
+          dest: '<%= config.dist %>',
+          src: [
+            '*.{ico,png,txt}',
+            'images/{,*/}*.webp',
+            '{,*/}*.html',
+            'styles/fonts/{,*/}*.*'
+          ]
+        }, {
+          expand: true,
+          dot: true,
+          cwd: '.',
+          src: 'bower_components/bootstrap-sass/assets/fonts/bootstrap/*',
+          dest: '<%= config.dist %>'
+        }]
+      }
+    },
+
+    // Generates a custom Modernizr build that includes only the tests you
+    // reference in your app
+    modernizr: {
+      dist: {
+        devFile: 'bower_components/modernizr/modernizr.js',
+        outputFile: '<%= config.dist %>/scripts/vendor/modernizr.js',
+        files: {
+          src: [
+            '<%= config.dist %>/scripts/{,*/}*.js',
+            '<%= config.dist %>/styles/{,*/}*.css',
+            '!<%= config.dist %>/scripts/vendor/*'
+          ]
+        },
+        uglify: true
+      }
+    },
+
+    // Run some tasks in parallel to speed up build process
+    concurrent: {
+      server: [
+        'babel:dist',
+        'sass:server'
+      ],
+      test: [
+        'babel'
+      ],
+      dist: [
+        'babel',
+        'imagemin',
+        'svgmin'
+      ]
+    }
   });
 
-  // Default task(s)
-  grunt.registerTask(
-    'publish',
-    'Publishes all the files in the dist directory to the master branch.',
-    ['clean', 'copy', 'htmlrefs', 'imagemin', 'gh-pages']
-  );
 
-  grunt.registerTask(
-    'dev',
-    'Watches for changes in the project, builds them, runs a server, and opens the browser.',
-    ['clean', 'copy', 'connect', 'open', 'watch']);
+  grunt.registerTask('serve', 'start the server and preview your app', function (target) {
 
-  grunt.registerTask(
-    'default',
-    'Watches for changes in the project',
-    ['clean', 'copy', 'watch']);
+    if (target === 'dist') {
+      return grunt.task.run(['build', 'browserSync:dist']);
+    }
 
+    grunt.task.run([
+      'clean:server',
+      'wiredep',
+      'concurrent:server',
+      'browserSync:livereload',
+      'watch'
+    ]);
+  });
+
+  grunt.registerTask('server', function (target) {
+    grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
+    grunt.task.run([target ? ('serve:' + target) : 'serve']);
+  });
+
+  grunt.registerTask('build', [
+    'clean:dist',
+    'wiredep',
+    'useminPrepare',
+    'concurrent:dist',
+    'concat',
+    'cssmin',
+    'uglify',
+    'copy:dist',
+    'modernizr',
+    'filerev',
+    'usemin'
+
+    //'htmlmin'
+  ]);
+
+  grunt.registerTask('default', [
+    'newer:eslint',
+    'build'
+  ]);
 };
