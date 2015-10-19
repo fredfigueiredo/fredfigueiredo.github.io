@@ -3,7 +3,7 @@
 dist
 doc
 node_modules
-bower_components
+static
 .grunt
 .tmp
 

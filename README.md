@@ -4,12 +4,15 @@
 
 ## Get started
 
+Install needed pre-dependencies:
+```sh
+sudo npm install -g grunt-cli
+sudo npm install -g bower
+```
+
 Clone the repository and switch to the 'source' branch:
 ```sh
 git clone git@github.com:fredfigueiredo/fredfigueiredo.github.io.git
-sudo npm install -g grunt-cli
-sudo npm install -g bower
-
 ```
 
 Move to the 'source' branch and install the required dependencies:
@@ -55,3 +58,7 @@ git push
 * Add grunt task to minify JS and CSS (when publishing)
 * Fix header divider in mobile (too long)
 * Add hover effect to buttons (like in http://boxever.com)
+
+## Thank You
+
+This site was created using [Webapp Yeoman Generator](https://github.com/yeoman/generator-webapp).

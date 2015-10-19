@@ -64,7 +64,7 @@ module.exports = function (grunt) {
           server: {
             baseDir: ['.tmp', config.app],
             routes: {
-              '/bower_components': './bower_components'
+              '/static/bower_components': './static/bower_components'
             }
           }
         }
@@ -78,7 +78,7 @@ module.exports = function (grunt) {
           server: {
             baseDir: ['.tmp', './test', config.app],
             routes: {
-              '/bower_components': './bower_components'
+              '/static/bower_components': './static/bower_components'
             }
           }
         }
@@ -286,7 +286,7 @@ module.exports = function (grunt) {
           expand: true,
           dot: true,
           cwd: '.',
-          src: 'bower_components/bootstrap-sass/assets/fonts/bootstrap/*',
+          src: 'static/bower_components/bootstrap-sass/assets/fonts/bootstrap/*',
           dest: '<%= config.dist %>'
         }]
       }
@@ -296,7 +296,7 @@ module.exports = function (grunt) {
     // reference in your app
     modernizr: {
       dist: {
-        devFile: 'bower_components/modernizr/modernizr.js',
+        devFile: 'static/bower_components/modernizr/modernizr.js',
         outputFile: '<%= config.dist %>/scripts/vendor/modernizr.js',
         files: {
           src: [
