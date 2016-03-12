@@ -28,6 +28,7 @@ grunt publish
 Needless to say, commit & push the changes from this branch into github:
 ```sh
 git add .
+git commit -m <message>
 git push
 ```
 
