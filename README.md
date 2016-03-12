@@ -25,8 +25,9 @@ When done, publish the changes into the master branch:
 grunt publish
 ```
 
-Needless to say, push the changes to github:
+Needless to say, commit & push the changes from this branch into github:
 ```sh
+git add .
 git push
 ```
 
